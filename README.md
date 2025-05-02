@@ -36,6 +36,6 @@ Este projeto foi desenvolvido para a matéria de Projetos de Software, do curso 
 ---
 
 ## Links uteis 
-[Diagrama de Classes (Figma)](https://www.figma.com/board/kfI284HSf8WiTKc50DqJa9/Class-Diagram-Template--Community-?node-id=9-5066&t=DRsJGtbsZeutKpX4-0)
-[Diagrama de Caso de Uso (Figma)](https://www.figma.com/design/Bx0Lyqh3I3o3oCAZlvXV4A/UML-Use-Case-Diagram--Community-?node-id=9-168&t=ivRcbmKKoFpdD9JJ-1)
+[Diagrama de Classes (Figma)](https://www.figma.com/community/widget/1223307422838321651)
+[Diagrama de Caso de Uso (Figma)](https://www.figma.com/community/file/986330591099819762/uml-use-case-diagram)
 
