@@ -35,3 +35,5 @@ Este projeto foi desenvolvido para a matéria de Projetos de Software, do curso 
 ---
 
 ## Links uteis 
+[Diagrama de Classes](https://www.figma.com/board/kfI284HSf8WiTKc50DqJa9/Class-Diagram-Template--Community-?node-id=9-5066&t=DRsJGtbsZeutKpX4-0)
+
