@@ -27,7 +27,7 @@ Este projeto foi desenvolvido para a matéria de Projetos de Software, do curso 
 ---
 
 ## Diagramas de classes
-
+![Diagrama de Classes](Diagramas/Diagrama%20de%20Classes.png)
 ---
 
 ## Diagramas de componentes
