@@ -32,7 +32,7 @@ Este projeto foi desenvolvido para a matéria de Projetos de Software, do curso 
 ---
 
 ## Diagramas de componentes
-
+![Diagrama de Caso de Uso](Diagramas/Componentes.png)
 ---
 
 ## Links uteis 
