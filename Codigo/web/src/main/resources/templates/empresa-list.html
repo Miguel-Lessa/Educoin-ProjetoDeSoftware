@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Empresas Parceiras</title></head>
+<body>
+<h2>Lista de Empresas Parceiras</h2>
+<table border="1">
+    <tr>
+        <th>CNPJ</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="empresa : ${empresas}">
+        <td th:text="${empresa.cnpj}"></td>
+        <td th:text="${empresa.nome}"></td>
+        <td>
+            <a th:href="@{/empresas/editar/{cnpj}(cnpj=${empresa.cnpj})}">Editar</a> |
+            <a th:href="@{/empresas/excluir/{cnpj}(cnpj=${empresa.cnpj})}">Excluir</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/empresas/empresa/cadastro}">Cadastrar nova empresa</a>
+</body>
+</html>

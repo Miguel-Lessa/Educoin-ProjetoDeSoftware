@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Formulário de Aluno</title></head>
+<body>
+<h2 th:text="${aluno.rg == null} ? 'Novo Aluno' : 'Editar Aluno'"></h2>
+<form action="/alunos" method="post" th:object="${aluno}">
+    <label>RG:</label><input type="text" th:field="*{rg}" required /><br/>
+    <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
+    <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
+    <label>Saldo de Moedas:</label><input type="number" th:field="*{saldoMoedas}" required /><br/>
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Home da Empresa</title></head>
+<body>
+<h2 th:text="'Bem-vindo(a), ' + ${empresa.nome}"></h2>
+
+<p><strong>CNPJ:</strong> <span th:text="${empresa.cnpj}"></span></p>
+
+<a th:href="@{/empresas/editar/{cnpj}(cnpj=${empresa.cnpj})}">Editar</a><br/>
+<a th:href="@{/empresas/excluir/{cnpj}(cnpj=${empresa.cnpj})}">Excluir</a>
+</body>
+</html>

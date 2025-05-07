@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Home do Aluno</title></head>
+<body>
+<h1>Bem-vindo, <span th:text="${aluno.nome}"></span></h1>
+
+<p><strong>RG:</strong> <span th:text="${aluno.rg}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${aluno.nome}"></span></p>
+<p><strong>Saldo de Moedas:</strong> <span th:text="${aluno.saldoMoedas}"></span></p>
+
+<a href="/alunos/editar/{rg}" th:href="@{/alunos/editar/{rg}(rg=${aluno.rg})}">Editar</a>
+<a href="/alunos/excluir/{rg}" th:href="@{/alunos/excluir/{rg}(rg=${aluno.rg})}">Excluir</a>
+</body>
+</html>

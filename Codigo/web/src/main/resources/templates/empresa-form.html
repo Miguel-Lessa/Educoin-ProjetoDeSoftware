@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Formulário de Empresa</title></head>
+<body>
+<h2 th:text="${empresa.cnpj == null} ? 'Nova Empresa' : 'Editar Empresa'"></h2>
+<form th:action="@{/empresas}" method="post" th:object="${empresa}">
+    <label>CNPJ:</label><input type="text" th:field="*{cnpj}" required /><br/>
+    <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
+    <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>
