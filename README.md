@@ -27,13 +27,17 @@ Este projeto foi desenvolvido para a matéria de Projetos de Software, do curso 
 
 ---
 
-## Diagramas de classes
+## Diagrama de classes
 ![Diagrama de Classes](Diagramas/Diagrama%20de%20Classes.png)
 ---
 
-## Diagramas de componentes
+## Diagrama de componentes
 ![Diagrama de Caso de Uso](Diagramas/Componentes.png)
 ---
+
+## Diagrama entidade relacionamento
+![Diagrama de entidade relacionamento](Diagramas/entidadeRelacionamento.pdf)
+
 
 ## Links uteis 
 [Diagrama de Classes (Figma)](https://www.figma.com/community/widget/1223307422838321651)
