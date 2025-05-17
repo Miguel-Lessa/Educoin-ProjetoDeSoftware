@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="/css/style.css">
 <head><title>Cadastro de Empresa</title></head>
 <body>
-<h2>Cadastro de Empresa Parceira</h2>
+    <head><title>Cadastro de Empresa</title></head>
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="/" class="home-link">
+                    <h1>Educoin</h1>
+                </a>
+                
+            </div>
+        </header>
+    <h2>Cadastro de Empresa</h2>
 <form th:action="@{/empresas/empresa/cadastrar}" method="post" th:object="${empresa}">
     <label>CNPJ:</label><input type="text" th:field="*{cnpj}" required /><br/>
     <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>

@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="/css/style.css">
 <head><title>Login de Aluno</title></head>
+
+<head><title>Cadastro de Aluno</title></head>
 <body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="home-link">
+                <h1>Educoin</h1>
+            </a>
+            
+        </div>
+    </header>
 <h2>Login de Aluno</h2>
+
 <form action="/alunos/login" method="post" th:object="${aluno}">
     <label>RG:</label><input type="text" th:field="*{rg}" required /><br/>
     <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>

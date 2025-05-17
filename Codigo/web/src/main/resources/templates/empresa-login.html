@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Login da Empresa</title></head>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+<head><title>Login da Empresa</title></head><body>
+
 <body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="home-link">
+                <h1>Educoin</h1>
+            </a>
+            
+        </div>
+    </header>
 <h2>Login de Empresa Parceira</h2>
 <form th:action="@{/empresas/empresa/login}" method="post" th:object="${empresa}">
     <label>CNPJ:</label><input type="text" th:field="*{cnpj}" required /><br/>

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
 
-<html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>Home Educoin</title>
-</head>
+    <link rel="stylesheet" href="/css/style.css">
 <body>
-    <h1> Bem vindo ao Educoin</h1>
-    <p> Escolha o tipo de login</p>
-
-    <ul>
-        <li><a href ="/login/empresa"> Login como empresa</a></li>
-        <li><a href ="/login/aluno"> Login como aluno</a></li>
-        <li><a href ="/login/professor"> Login como professor</a></li>
-    </ul>
+<header>
+    <header>
+    <div class="header-container">
+        <a href="/" class="home-link">
+            <h1>Educoin</h1>
+        </a>
+    </div>
+</header>
+<main>
+    <nav>
+        <a href="/empresa-login">Sou empresário</a>
+    </nav>
+    <nav>
+        <a href="/aluno-login">Sou aluno</a>
+    </nav>
+    <nav>
+        <a href="/professores-login">Sou professor</a>
+    </nav>
+</main>
+<footer>
+    <hr>
+    <p>&copy; 2025 Educoin. Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>
