@@ -9,18 +9,17 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "alunos")
-public class Aluno {
+@Table(name = "professores")
+public class Professor {
 
     @Id
     @Column(name = "rg", unique = true, nullable = false)
-    private String rg;
+    private String id;
     @Column(nullable = false)
     private String nome;
     private String endereco;
     private int saldoMoedas;
+    private String departamento;
     @Column(nullable = false)
     private String senha;
-    @Column(nullable = false)
-    private String email;
 }

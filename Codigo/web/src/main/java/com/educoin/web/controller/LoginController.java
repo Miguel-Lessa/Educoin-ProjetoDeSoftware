@@ -2,6 +2,7 @@ package com.educoin.web.controller;
 
 import com.educoin.web.model.Aluno;
 import com.educoin.web.model.EmpresaParceira;
+import com.educoin.web.model.Professor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,5 +26,11 @@ public class LoginController {
     public String empresaLogin(Model model) {
         model.addAttribute("empresa", new EmpresaParceira());
         return "empresa-login";
+    }
+
+    @GetMapping("/professor-login")
+    public String professorLogin(Model model) {
+        model.addAttribute("professor", new Professor());
+        return "professor-login";
     }
 }

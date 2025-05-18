@@ -15,6 +15,7 @@
 <form action="/alunos/cadastro" method="post" th:object="${aluno}">
     <label>RG:</label><input type="text" th:field="*{rg}" required /><br/>
     <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
+    <label>Email:</label><input type="text" th:field="*{email}" required /><br/>
     <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
     <button type="submit">Cadastrar</button>
 </form>

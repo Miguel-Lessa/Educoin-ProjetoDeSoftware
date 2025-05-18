@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <link rel="stylesheet" href="/css/style.css">
-
-<head><title>Login de professor</title></head>
+<head><title>Cadastro de Professor</title></head>
 <body>
     <header>
         <div class="header-container">
             <a href="/" class="home-link">
                 <h1>Educoin</h1>
             </a>
-            
         </div>
     </header>
-<h2>Login de Professor</h2>
-<form action="/professores/login" method="post" th:object="${professor}">
+<h2>Cadastro de Professor</h2>
+<form action="/professores/cadastro" method="post" th:object="${professor}">
     <label>ID:</label><input type="text" th:field="*{id}" required /><br/>
+    <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
     <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
-    <button type="submit">Entrar</button>
+    <button type="submit">Cadastrar</button>
 </form>
-<p>Não tem conta? <a href="/professor/cadastro">Cadastrar</a></p>
-<p th:if="${erro}" th:text="${erro}" style="color: red;"></p>
+<p>Já tem conta? <a href="/professores/login">Fazer login</a></p>
 </body>
 </html>
