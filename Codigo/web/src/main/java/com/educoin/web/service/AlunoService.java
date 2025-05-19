@@ -47,4 +47,12 @@ public class AlunoService {
     public Aluno salvarAluno(Aluno aluno) {
         return alunoRepository.save(aluno);
     }
+
+    public void adicionarMoedas(String rg, int quantidade) {
+    Aluno aluno = alunoRepository.findById(rg).orElse(null);
+    if (aluno != null) {
+        aluno.setSaldoMoedas(aluno.getSaldoMoedas() + quantidade);
+        alunoRepository.save(aluno);
+      }
+    }
 }

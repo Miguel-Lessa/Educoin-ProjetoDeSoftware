@@ -74,6 +74,12 @@ label {
     font-weight: bold;
 }
 
+
+select {
+    display: block;
+    margin-bottom: 5px;
+}
+
 input, button {
     width: 100%;
     padding: 10px;
@@ -115,3 +121,54 @@ h2 {
     align-items: flex-start;
 }
 
+
+.inline-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.inline-form input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+.inline-form button {
+    width: auto;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+}
+
+.inline-form button:hover {
+    background-color: #217dbb;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    text-align: center;
+    justify-content: center;
+}
+
+li {
+    text-align: center;
+    justify-content: center;
+}

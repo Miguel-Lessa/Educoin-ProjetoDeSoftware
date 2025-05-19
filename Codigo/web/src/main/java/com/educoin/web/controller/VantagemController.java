@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/vantagens")
@@ -29,14 +30,18 @@ public class VantagemController {
     public String nova(Model model) {
         model.addAttribute("vantagem", new Vantagem());
         model.addAttribute("empresas", empresaRepository.findAll());
-        return "vantagem-form";
+        return "empresa-home";
     }
 
     @PostMapping
-    public String salvar(@ModelAttribute Vantagem vantagem) {
-        vantagemService.salvar(vantagem);
-        return "redirect:/vantagens";
-    }
+public String salvar(@ModelAttribute Vantagem vantagem, Model model) {
+    vantagemService.salvar(vantagem);
+    EmpresaParceira empresa = vantagem.getEmpresaParceira();
+    model.addAttribute("empresa", empresa);
+    model.addAttribute("vantagem", new Vantagem());
+    model.addAttribute("mensagem", "Vantagem cadastrada com sucesso!");
+    return "empresa-home";
+}
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {
@@ -50,4 +55,8 @@ public class VantagemController {
         vantagemService.excluirPorId(id);
         return "redirect:/vantagens";
     }
+
+
+    
 }
+

@@ -1,6 +1,7 @@
 package com.educoin.web.controller;
 
 import com.educoin.web.model.EmpresaParceira;
+import com.educoin.web.model.Vantagem;
 import com.educoin.web.service.EmpresaParceiraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,13 +65,26 @@ public class EmpresaParceiraController {
 
     @PostMapping("/empresa/login")
     public String login(@ModelAttribute EmpresaParceira empresa, Model model) {
-        EmpresaParceira existente = service.buscarPorCnpj(empresa.getCnpj());
-        if (existente != null && existente.getSenha().equals(empresa.getSenha())) {
-            model.addAttribute("empresa", existente);
-            return "empresa-home";
-        } else {
-            model.addAttribute("erro", "CNPJ ou senha inválidos");
-            return "empresa-login";
-        }
+    EmpresaParceira existente = service.buscarPorCnpj(empresa.getCnpj());
+    if (existente != null && existente.getSenha().equals(empresa.getSenha())) {
+        model.addAttribute("empresa", existente);
+        Vantagem vantagem = new Vantagem();
+        vantagem.setEmpresaParceira(existente);
+        model.addAttribute("vantagem", vantagem);
+        return "empresa-home";
+    } else {
+        model.addAttribute("erro", "CNPJ ou senha inválidos");
+        return "empresa-login";
     }
+}
+
+@GetMapping("/home")
+public String homeEmpresa(Model model, @RequestParam("cnpj") String cnpj) {
+    EmpresaParceira empresa = service.buscarPorCnpj(cnpj);
+    Vantagem vantagem = new Vantagem();
+    vantagem.setEmpresaParceira(empresa); // já associa a empresa
+    model.addAttribute("empresa", empresa);
+    model.addAttribute("vantagem", vantagem);
+    return "empresa-home";
+}
 }

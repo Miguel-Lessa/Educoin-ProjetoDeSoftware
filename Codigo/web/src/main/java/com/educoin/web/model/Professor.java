@@ -17,9 +17,13 @@ public class Professor {
     private String id;
     @Column(nullable = false)
     private String nome;
-    private String endereco;
     private int saldoMoedas;
     private String departamento;
     @Column(nullable = false)
     private String senha;
+    @Column(nullable = false)
+    private String curso;
+    @ManyToOne
+    @JoinColumn(name = "instituicao_id", nullable = false)
+    private Instituicao instituicao;
 }

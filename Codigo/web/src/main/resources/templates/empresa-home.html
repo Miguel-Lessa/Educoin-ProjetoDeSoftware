@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Home da Empresa</title></head>
+<head>
+    <title>Home da Empresa</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h2 th:text="'Bem-vindo(a), ' + ${empresa.nome}"></h2>
+    <h2 th:text="'Bem-vindo(a), ' + ${empresa.nome}"></h2>
+    <p><strong>CNPJ:</strong> <span th:text="${empresa.cnpj}"></span></p>
 
-<p><strong>CNPJ:</strong> <span th:text="${empresa.cnpj}"></span></p>
+    <form th:action="@{/vantagens}" method="post" th:object="${vantagem}">
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required /><br/>
+        <label>Custo em Moedas:</label>
+        <input type="number" th:field="*{custoMoeda}" min="1" required /><br/>
+        <input type="hidden" th:field="*{empresaParceira.cnpj}" />
+        <button type="submit">Cadastrar Vantagem</button>
+    </form>
 
-<a th:href="@{/empresas/editar/{cnpj}(cnpj=${empresa.cnpj})}">Editar</a><br/>
-<a th:href="@{/empresas/excluir/{cnpj}(cnpj=${empresa.cnpj})}">Excluir</a>
+    <a th:href="@{/empresas/editar/{cnpj}(cnpj=${empresa.cnpj})}">Editar</a><br/>
+    <a th:href="@{/empresas/excluir/{cnpj}(cnpj=${empresa.cnpj})}">Excluir</a>
 </body>
 </html>

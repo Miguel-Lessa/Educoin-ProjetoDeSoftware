@@ -17,6 +17,12 @@
     <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
     <label>Email:</label><input type="text" th:field="*{email}" required /><br/>
     <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
+    <label>Instituição:</label>
+    <select th:field="*{instituicao}">
+        <option th:each="inst : ${instituicoes}" th:value="${inst.id}" th:text="${inst.nome}"></option>
+    </select>
+    <label>Curso:</label>
+    <input type="text" th:field="*{curso}" required /><br/> 
     <button type="submit">Cadastrar</button>
 </form>
 <p>Já tem conta? <a href="/alunos/login">Fazer login</a></p>

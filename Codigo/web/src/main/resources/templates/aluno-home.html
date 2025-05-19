@@ -16,7 +16,18 @@
 <p><strong>RG:</strong> <span th:text="${aluno.rg}"></span></p>
 <p><strong>Nome:</strong> <span th:text="${aluno.nome}"></span></p>
 <p><strong>Saldo de Moedas:</strong> <span th:text="${aluno.saldoMoedas}"></span></p>
-
+<h2>Vantagens disponíveis:</h2>
+<ul>
+    <li th:each="vant : ${vantagens}">
+        <span th:text="${vant.nome}"></span> -
+        <span th:text="${vant.custoMoeda}"></span> moedas
+        <form th:action="@{/alunos/resgatar-vantagem}" method="post" style="display:inline;">
+            <input type="hidden" name="vantagemId" th:value="${vant.id}" />
+            <input type="hidden" name="alunoRg" th:value="${aluno.rg}" />
+            <button type="submit">Resgatar</button>
+        </form>
+    </li>
+</ul>
 <a href="/alunos/editar/{rg}" th:href="@{/alunos/editar/{rg}(rg=${aluno.rg})}">Editar</a>
 <a href="/alunos/excluir/{rg}" th:href="@{/alunos/excluir/{rg}(rg=${aluno.rg})}">Excluir</a>
 </body>

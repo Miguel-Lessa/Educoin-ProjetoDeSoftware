@@ -15,7 +15,12 @@
     <label>ID:</label><input type="text" th:field="*{id}" required /><br/>
     <label>Nome:</label><input type="text" th:field="*{nome}" required /><br/>
     <label>Senha:</label><input type="password" th:field="*{senha}" required /><br/>
-    <button type="submit">Cadastrar</button>
+    <label>Instituição:</label>
+    <select th:field="*{instituicao}">
+        <option th:each="inst : ${instituicoes}" th:value="${inst.id}" th:text="${inst.nome}"></option>
+    </select><br/>
+    <label>Curso:</label><input type="text" th:field="*{curso}" required /><br/>
+    <button type="submit">Cadastrar</button> 
 </form>
 <p>Já tem conta? <a href="/professores/login">Fazer login</a></p>
 </body>

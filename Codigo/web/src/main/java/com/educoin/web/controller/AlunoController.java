@@ -1,11 +1,19 @@
 package com.educoin.web.controller;
 
 import com.educoin.web.model.Aluno;
+import com.educoin.web.model.Professor;
+import com.educoin.web.repository.InstituicaoRepository;
+import com.educoin.web.repository.ProfessorRepository;
+import com.educoin.web.repository.VantagemRepository;
 import com.educoin.web.service.AlunoService;
+import com.educoin.web.service.VantagemService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 @RequestMapping("/alunos")
@@ -51,6 +59,7 @@ public class AlunoController {
     @GetMapping("/cadastro")
     public String cadastro(Model model) {
         model.addAttribute("aluno", new Aluno());
+        model.addAttribute("instituicoes", instituicaoRepository.findAll());
         return "aluno-cadastro";
     }
 
@@ -77,12 +86,55 @@ public class AlunoController {
         }
     }
 
+
+    @Autowired
+    private InstituicaoRepository instituicaoRepository;
+
+    @GetMapping("/alunos/cadastro")
+    public String mostrarFormularioCadastro(Model model) {
+     model.addAttribute("aluno", new Aluno());
+     model.addAttribute("instituicoes", instituicaoRepository.findAll());
+     return "aluno-cadastro";
+    }
+
+    @Autowired
+    private ProfessorRepository professorRepository;
+
+    @Autowired
+    private com.educoin.web.repository.AlunoRepository alunoRepository;
+    
+    @PostMapping("/alunos/cadastro")
+    public String cadastrarAluno(@ModelAttribute Aluno aluno, Model model) {
+        Professor professor = professorRepository.findByCurso(aluno.getCurso());
+        aluno.setProfessor(professor);
+        alunoRepository.save(aluno);
+        return "redirect:/aluno-login";
+    }
+
+    @Autowired
+    private VantagemRepository vantagemRepository;
+
     @GetMapping("/home")
     public String homeAluno(Model model, @RequestParam("rg") String rg) {
-
         Aluno aluno = alunoService.buscarPorRg(rg);
         model.addAttribute("aluno", aluno);
+        model.addAttribute("vantagens", vantagemRepository.findAll());
         return "aluno-home";
     }
+
+    @Autowired
+private VantagemService vantagemService;
+
+@PostMapping("/resgatar-vantagem")
+public String resgatarVantagem(@RequestParam Long vantagemId, @RequestParam String alunoRg, RedirectAttributes redirectAttributes) {
+    boolean sucesso = vantagemService.resgatarVantagem(alunoRg, vantagemId);
+    if (sucesso) {
+        redirectAttributes.addFlashAttribute("mensagem", "Vantagem resgatada! O código foi enviado para seu email.");
+    } else {
+        redirectAttributes.addFlashAttribute("erro", "Saldo insuficiente ou erro ao resgatar.");
+    }
+    return "redirect:/alunos/home?rg=" + alunoRg;
+}
+
 
 }

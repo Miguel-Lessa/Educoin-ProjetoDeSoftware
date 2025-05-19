@@ -23,4 +23,11 @@ public class Aluno {
     private String senha;
     @Column(nullable = false)
     private String email;
+    private String curso;
+    @ManyToOne
+    @JoinColumn(name = "instituicao_id", nullable = false)
+    private Instituicao instituicao;
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 }

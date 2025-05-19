@@ -10,13 +10,17 @@ import lombok.*;
 @Builder
 @Entity
 public class Vantagem {
-
-    @Id
+@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descricao;
+
+    @Column(nullable = false)
+    private String nome;
+
     private int custoMoeda;
+
     @ManyToOne
     @JoinColumn(name = "cnpj")
     private EmpresaParceira empresaParceira;
+
 }

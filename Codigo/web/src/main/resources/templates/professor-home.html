@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.oid">
+    <link rel="stylesheet" href="/css/style.css">
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="/" class="home-link">
+                    <h1>Educoin</h1>
+                </a>
+                
+            </div>
+        </header>
+<body>
+<h1>Bem-vindo, <span th:text="${professor.nome}"></span></h1>
+
+<p><strong>id:</strong> <span th:text="${professor.id}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${professor.nome}"></span></p>
+<p><strong>Saldo de Moedas:</strong> <span th:text="${professor.saldoMoedas}"></span></p>
+
+<h2>Alunos deste professor:</h2>
+<ul>
+    <li th:each="aluno : ${alunos}">
+       
+        <form th:action="@{/professores/enviar-moedas}" method="post" style="display:inline;">
+            <span th:text="${aluno.nome}"></span> - <span th:text="${aluno.rg}"></span>
+            <input type="hidden" name="alunoRg" th:value="${aluno.rg}" />
+            <input type="hidden" name="professorId" th:value="${professor.id}" />
+            <input type="number" name="quantidade" min="1" placeholder="Moedas" required style="width: 60px;" />
+            <button type="submit">Enviar</button>
+        </form>
+    </li>
+</ul>
+
+
+
+<a href="/professores/editar/{id}" th:href="@{/professores/editar/{id}(id=${professor.id})}">Editar</a>
+<a href="/professores/excluir/{id}" th:href="@{/professores/excluir/{id}(id=${professor.id})}">Excluir</a>
+</body>
+</html>

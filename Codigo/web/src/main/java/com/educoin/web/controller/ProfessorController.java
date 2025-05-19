@@ -2,15 +2,26 @@ package com.educoin.web.controller;
 
 import com.educoin.web.model.Professor;
 import com.educoin.web.service.ProfessorService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.educoin.web.repository.AlunoRepository;
+import com.educoin.web.repository.InstituicaoRepository;
+import com.educoin.web.model.Aluno;
 
 @Controller
 @RequestMapping("/professores")
 public class ProfessorController {
 
+    @Autowired
+    private AlunoRepository alunoRepository;
+
+    @Autowired
+    private InstituicaoRepository instituicaoRepository;
     @Autowired
     private ProfessorService professorService;
 
@@ -30,6 +41,13 @@ public class ProfessorController {
     public String salvar(@ModelAttribute Professor professor) {
         professorService.salvar(professor);
         return "redirect:/professores";
+    }
+
+    @PostMapping("/cadastro")
+    public String cadastrar(@ModelAttribute Professor professor) {
+        professor.setSaldoMoedas(1000);
+        professorService.salvar(professor);
+        return "redirect:/professores/login";
     }
 
     @GetMapping("/editar/{id}")
@@ -68,9 +86,33 @@ public class ProfessorController {
     public String homeProfessor(Model model, @RequestParam("id") String id) {
         Professor professor = professorService.buscarPorId(id);
         model.addAttribute("professor", professor);
+        List<Aluno> alunos = alunoRepository.findByCurso(professor.getCurso());
+        model.addAttribute("alunos", alunos);
         return "professor-home";
     }
 
+    @GetMapping("/cadastro")
+    public String cadastro(Model model) {
+     model.addAttribute("professor", new Professor());
+     model.addAttribute("instituicoes", instituicaoRepository.findAll());
+    return "professor-cadastro";
+    }
 
+
+    @Autowired
+    private com.educoin.web.service.AlunoService alunoService;
+    @PostMapping("/enviar-moedas")
+    public String enviarMoedas(@RequestParam String alunoRg, @RequestParam int quantidade, @RequestParam String professorId, Model model) {
+        Professor professor = professorService.buscarPorId(professorId);
+             if (professor.getSaldoMoedas() >= quantidade) {
+                alunoService.adicionarMoedas(alunoRg, quantidade);
+                professor.setSaldoMoedas(professor.getSaldoMoedas() - quantidade);
+                professorService.salvar(professor);
+            } else {
+                model.addAttribute("erro", "Saldo insuficiente para enviar moedas.");
+            }
+         return "redirect:/professores/home?id=" + professorId;
+        }
+    
 
 }
