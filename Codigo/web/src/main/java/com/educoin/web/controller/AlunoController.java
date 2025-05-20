@@ -111,18 +111,19 @@ public class AlunoController {
         return "redirect:/aluno-login";
     }
 
-    @Autowired
-    private VantagemRepository vantagemRepository;
 
-    @GetMapping("/home")
-    public String homeAluno(Model model, @RequestParam("rg") String rg) {
-        Aluno aluno = alunoService.buscarPorRg(rg);
-        model.addAttribute("aluno", aluno);
-        model.addAttribute("vantagens", vantagemRepository.findAll());
-        return "aluno-home";
-    }
+@Autowired
+private VantagemRepository vantagemRepository;
 
-    @Autowired
+@GetMapping("/home")
+public String homeAluno(Model model, @RequestParam("rg") String rg) {
+    Aluno aluno = alunoService.buscarPorRg(rg);
+    model.addAttribute("aluno", aluno);
+    model.addAttribute("vantagens", vantagemRepository.findAll());
+    return "aluno-home";
+}
+
+@Autowired
 private VantagemService vantagemService;
 
 @PostMapping("/resgatar-vantagem")
