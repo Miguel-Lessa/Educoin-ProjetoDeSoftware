@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class EmpresaParceiraController {
 
     @Autowired
-    private EmpresaParceiraService service;
+    private EmpresaParceiraService service;  
+
+    
 
     @GetMapping
     public String listar(Model model) {
