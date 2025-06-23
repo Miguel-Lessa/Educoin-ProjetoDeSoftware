@@ -104,6 +104,7 @@ public class ProfessorController {
     @PostMapping("/enviar-moedas")
     public String enviarMoedas(@RequestParam String alunoRg, @RequestParam int quantidade, @RequestParam String professorId, Model model) {
         Professor professor = professorService.buscarPorId(professorId);
+        
              if (professor.getSaldoMoedas() >= quantidade) {
                 alunoService.adicionarMoedas(alunoRg, quantidade);
                 professor.setSaldoMoedas(professor.getSaldoMoedas() - quantidade);

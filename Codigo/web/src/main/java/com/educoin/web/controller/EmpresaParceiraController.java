@@ -69,6 +69,7 @@ public class EmpresaParceiraController {
     public String login(@ModelAttribute EmpresaParceira empresa, Model model) {
     EmpresaParceira existente = service.buscarPorCnpj(empresa.getCnpj());
     if (existente != null && existente.getSenha().equals(empresa.getSenha())) {
+        
         model.addAttribute("empresa", existente);
         Vantagem vantagem = new Vantagem();
         vantagem.setEmpresaParceira(existente);
